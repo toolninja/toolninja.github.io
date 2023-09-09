@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate JSON-LD and HTML Code for FAQs with our FAQ Generator. Create structured FAQ content easily. Copy and paste FAQs, add questions and answers, and generate code effortlessly.">
+    <style>
+        /* Your CSS styles here */
+    <title>FAQ to JSON-LD Generator</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .faq-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .customfaq {
+            border: 2px solid #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+
+        p {
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 768px) {
+            .faq-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>FAQs Generator</h1>
+    <div class="faq-container">
+        <textarea placeholder="Write your FAQs here then copy-paste it" style="width: 100%; height: 300px;"></textarea>
+        <h2>Frequently Asked Questions</h2>
+        <div id="faqContainer">
+        </div>
+
+        <hr>
+        <button id="addFaqButton">Add FAQ</button>
+        <button id="generateJsonLdButton">Generate JSON-LD</button>
+        <button id="generateHtmlCodeButton">Generate HTML Code</button>
+        <br>
+        <h3>Copy your code below</h3><hr>
+        <div id="jsonLdOutput">
+            <pre id="jsonLdCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        function generateJsonLd() {
+            const detailsElements = document.querySelectorAll('.containerfaq');
+
+            const faqData = {
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                'mainEntity': []
+            };
+
+            detailsElements.forEach((details) => {
+                const question = details.querySelector('.customfaq').textContent;
+                const answer = details.querySelector('p').textContent;
+
+                const questionObject = {
+                    '@type': 'Question',
+                    'name': question,
+                    'acceptedAnswer': {
+                        '@type': 'Answer',
+                        'text': answer
+                    }
+                };
+
+                faqData.mainEntity.push(questionObject);
+            });
+
+            const jsonLdCode = JSON.stringify(faqData, null, 2);
+            document.getElementById('jsonLdCode').textContent = jsonLdCode;
+        }
+
+        // Call the function when the page loads
+        generateJsonLd();
+
+        document.getElementById('addFaqButton').addEventListener('click', function () {
+            const faqContainer = document.getElementById('faqContainer');
+            const newFaq = document.createElement('details');
+            newFaq.classList.add('containerfaq');
+            newFaq.innerHTML = `
+                <summary class="customfaq" contenteditable="true"></summary>
+                <div>
+                    <p contenteditable="true"></p>
+                </div>
+            `;
+            faqContainer.appendChild(newFaq);
+        });
+
+        document.getElementById('generateJsonLdButton').addEventListener('click', function () {
+            generateJsonLd();
+        });
+
+        document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
+            const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
+            const textAreas = faqContainerClone.querySelectorAll('[contenteditable="true"]');
+            textAreas.forEach((area) => {
+                area.removeAttribute('contenteditable');
+            });
+
+            const htmlCode = faqContainerClone.outerHTML;
+            document.getElementById('jsonLdCode').textContent = htmlCode;
+        });
+    </script>
+</body>
+</html>
