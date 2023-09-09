@@ -211,4 +211,11 @@ body {
     .hamburger-menu-container {
         display: flex;
     }
+     .dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        position: relative;
+    }
 }
