@@ -13,6 +13,13 @@ body {
     margin: 0;
     padding: 0;
 }
+a {
+    text-decoration: none;
+    color: #004aad;
+}
+a:hover {
+    color: blue;
+}
 
 /* Header Styles */
 .header {
@@ -218,4 +225,8 @@ body {
     .dropdown-content {
         position: relative;
     }
+    
+}
+.article {
+    padding: 10px 200px;
 }
