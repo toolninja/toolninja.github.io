@@ -50,13 +50,13 @@
 .blogtitle h2 {
     font-size: 16px;
 }
-.bloglink {
+/* .bloglink {
     text-decoration: none;
     color: black;
 }
 .bloglink:hover {
     color: #004aad;
-}
+} */
 @media (max-width: 720px){
     .container {
         flex-direction: column;

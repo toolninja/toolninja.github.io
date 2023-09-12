@@ -1,24 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate JSON-LD and HTML Code for FAQs with our FAQ Generator. Create structured FAQ content easily. Copy and paste FAQs, add questions and answers, and generate code effortlessly.">
-    <style>
-        /* Your CSS styles here */
+    <meta name="description"
+        content="Generate JSON-LD and HTML Code for FAQs with our FAQ Generator. Create structured FAQ content easily. Copy and paste FAQs, add questions and answers, and generate code effortlessly.">
     <title>FAQ to JSON-LD Generator</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="canonical" href="https://toolninja.github.io/faq-schema-generator.html">
     <style>
         /* Add your CSS styling here */
-        body {
+        /* body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+        } */
+    
+        pre {
+            text-wrap: wrap;
+            overflow: auto;
+        }
+        .faqans {
+            background-color: #f8f8f8;
+            /* box-shadow: 5px 5px 12px 1px rgba(0, 0, 0, 0.3); */
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .faqans p {
+            padding: 10px;
+        }
+        .faqans P:focus-visible {
+            outline: none;
         }
 
-        h1 {
+        .faqhead {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+        }
+         .faqheading {
+            margin-top: 10px;
             text-align: center;
-            padding: 20px 0;
+            /* padding: 10px 0; */
+            color: #0056b3;
+        } 
+        hr {
+            width: 70%;
+            height: 3px;
+            background-color: #0056b3;
+            margin: 10px auto;
+
         }
 
         .faq-container {
@@ -39,13 +73,15 @@
             margin-bottom: 10px;
             background-color: #fff;
         }
+        .customfaq:focus-visible {
+            outline: none;
+        }
 
         p {
-            padding: 10px;
-            background-color: #f4f4f4;
             border-radius: 5px;
             margin: 0;
         }
+        
 
         button {
             display: block;
@@ -70,25 +106,66 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>FAQs Generator</h1>
-    <div class="faq-container">
-        <textarea placeholder="Write your FAQs here then copy-paste it" style="width: 100%; height: 300px;"></textarea>
-        <h2>Frequently Asked Questions</h2>
-        <div id="faqContainer">
+    <header class="header">
+        <div class="header-container">
+            <img src="./assets/favicon.png" alt="logo" class="header-logo">
+            <h1 class="header-title">Welcome to <span>ToolNinja</span></h1>
+            <p class="header-description">Your Online Toolkit for Everyday Tasks</p>
         </div>
-
-        <hr>
-        <button id="addFaqButton">Add FAQ</button>
-        <button id="generateJsonLdButton">Generate JSON-LD</button>
-        <button id="generateHtmlCodeButton">Generate HTML Code</button>
-        <br>
-        <h3>Copy your code below</h3><hr>
-        <div id="jsonLdOutput">
-            <pre id="jsonLdCode"></pre>
+        <!-- Hamburger menu container with the hamburger icon test -->
+        <div class="hamburger-menu-container">
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
+        <nav class="header-nav">
+            <ul class="header-menu">
+                <li class="header-menu-item"><a href="/" class="header-menu-link">Home</a></li>
+                <li class="header-menu-item"><a href="./blog.html" class="header-menu-link">Blog</a></li>
+                <li class="header-menu-item dropdown">
+                    <a href="#" class="header-menu-link">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="./faq-schema-generator.html" class="dropdown-link">FAQs Generator</a>
+                        <a href="./html-table-generator.html" class="dropdown-link">Table Generator</a>
+                    </div>
+                </li>
+                <li class="header-menu-item"><a href="#" class="header-menu-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="faqhead">
+        <h1 class="faqheading">FAQs Generator</h1><hr>
+        <p style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">Don't Know How To Use This? <a href="./faq-schema-generator-user-guide.html">Read This Guide</a></p>
     </div>
+        <div class="faq-container">
+            <textarea placeholder="You can Write your references here..."
+                style="width: 100%; height: 200px; padding: 10px;"></textarea>
+            <h2 class="faqheading">Frequently Asked Questions</h2>
+            <div id="faqContainer">
+            </div>
 
+            <hr>
+            <button id="addFaqButton">Add FAQ</button>
+            <button id="removeLastFaqButton">Remove Last FAQ</button>
+            <button id="generateJsonLdButton">Generate JSON-LD</button>
+            <button id="generateHtmlCodeButton">Generate HTML Code</button>
+            <br>
+            <h3 class="faqheading">Copy Your Code Below</h3>
+            <hr>
+            <div id="jsonLdOutput">
+                <pre id="jsonLdCode"></pre>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p class="footer-text">&copy; 2023 ToolNinja</p>
+    </footer>
+    <script src="./script/script.js"></script>
     <script>
         function generateJsonLd() {
             const detailsElements = document.querySelectorAll('.containerfaq');
@@ -124,11 +201,11 @@
 
         document.getElementById('addFaqButton').addEventListener('click', function () {
             const faqContainer = document.getElementById('faqContainer');
-            const newFaq = document.createElement('details');
+            const newFaq = document.createElement('div');
             newFaq.classList.add('containerfaq');
             newFaq.innerHTML = `
-                <summary class="customfaq" contenteditable="true"></summary>
-                <div>
+                <div class="customfaq" contenteditable="true"></div>
+                <div class=faqans>
                     <p contenteditable="true"></p>
                 </div>
             `;
@@ -138,17 +215,36 @@
         document.getElementById('generateJsonLdButton').addEventListener('click', function () {
             generateJsonLd();
         });
+document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
+    const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
 
-        document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
-            const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
-            const textAreas = faqContainerClone.querySelectorAll('[contenteditable="true"]');
-            textAreas.forEach((area) => {
-                area.removeAttribute('contenteditable');
-            });
+    const containerfaqElements = faqContainerClone.querySelectorAll('.containerfaq');
+    containerfaqElements.forEach((containerfaq) => {
+        const details = document.createElement('details');
+        details.classList.add('containerfaq');
+        details.innerHTML = containerfaq.innerHTML;
+        containerfaq.replaceWith(details);
+    });
 
-            const htmlCode = faqContainerClone.outerHTML;
-            document.getElementById('jsonLdCode').textContent = htmlCode;
-        });
+    const textAreas = faqContainerClone.querySelectorAll('[contenteditable="true"]');
+    textAreas.forEach((area) => {
+        area.removeAttribute('contenteditable');
+    });
+
+    const htmlCode = faqContainerClone.outerHTML;
+    document.getElementById('jsonLdCode').textContent = htmlCode;
+});
+    </script>
+    <script>
+    document.getElementById('removeLastFaqButton').addEventListener('click', function () {
+        const faqContainer = document.getElementById('faqContainer');
+        const faqItems = faqContainer.querySelectorAll('.containerfaq');
+        
+        if (faqItems.length > 0) {
+            faqContainer.removeChild(faqItems[faqItems.length - 1]);
+        }
+    });
     </script>
 </body>
+
 </html>
