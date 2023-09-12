@@ -215,23 +215,6 @@
         document.getElementById('generateJsonLdButton').addEventListener('click', function () {
             generateJsonLd();
         });
-//         document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
-//     const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
-//     const divElements = faqContainerClone.querySelectorAll('div');
-//     divElements.forEach((div) => {
-//         const summary = document.createElement('summary');
-//         summary.textContent = div.textContent;
-//         div.replaceWith(summary);
-//     });
-
-//     const textAreas = faqContainerClone.querySelectorAll('[contenteditable="true"]');
-//     textAreas.forEach((area) => {
-//         area.removeAttribute('contenteditable');
-//     });
-
-//     const htmlCode = faqContainerClone.outerHTML;
-//     document.getElementById('jsonLdCode').textContent = htmlCode;
-// });
 document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
     const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
 
