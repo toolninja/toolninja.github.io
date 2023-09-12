@@ -9,6 +9,7 @@
     <title>FAQ to JSON-LD Generator</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="canonical" href="https://toolninja.github.io/faq-schema-generator.html">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <style>
         /* Add your CSS styling here */
         /* body {
@@ -215,14 +216,28 @@
         document.getElementById('generateJsonLdButton').addEventListener('click', function () {
             generateJsonLd();
         });
-document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
+        document.getElementById('generateHtmlCodeButton').addEventListener('click', function () {
     const faqContainerClone = document.getElementById('faqContainer').cloneNode(true);
-
+    
     const containerfaqElements = faqContainerClone.querySelectorAll('.containerfaq');
     containerfaqElements.forEach((containerfaq) => {
         const details = document.createElement('details');
         details.classList.add('containerfaq');
-        details.innerHTML = containerfaq.innerHTML;
+        
+        const summary = document.createElement('summary');
+        summary.classList.add('customfaq');
+        summary.textContent = containerfaq.querySelector('.customfaq').textContent;
+        
+        const divFaqans = document.createElement('div');
+        divFaqans.classList.add('faqans');
+        
+        const p = document.createElement('p');
+        p.textContent = containerfaq.querySelector('.faqans p').textContent;
+        
+        divFaqans.appendChild(p);
+        details.appendChild(summary);
+        details.appendChild(divFaqans);
+        
         containerfaq.replaceWith(details);
     });
 
