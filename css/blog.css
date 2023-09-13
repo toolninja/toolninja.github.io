@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: auto;
     color: #004aad;
     font-size: 14px;
     padding: 10px;

@@ -41,6 +41,7 @@
 
         .tool-link:hover {
             background-color: #002f72;
+            color: #fff;
         }
 
         .tools {
@@ -48,4 +49,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+        }
+        @media (max-width: 720px) {
+            .tool {
+                width: 100%;
+            }
         }

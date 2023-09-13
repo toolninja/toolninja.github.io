@@ -27,6 +27,9 @@
                 width: 95%;
             }
         }
+        ol {
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -48,15 +51,15 @@
         <nav class="header-nav">
             <ul class="header-menu">
                 <li class="header-menu-item"><a href="./index.html" class="header-menu-link">Home</a></li>
-                <li class="header-menu-item"><a href="#" class="header-menu-link">Blog</a></li>
+                <li class="header-menu-item"><a href="./blog.html" class="header-menu-link">Blog</a></li>
                 <li class="header-menu-item dropdown">
                     <a href="#" class="header-menu-link">Tools</a>
                     <div class="dropdown-content">
                         <a href="./faq-schema-generator.html" class="dropdown-link">FAQ Schema</a>
-                        <a href="./html-table-generator.html" class="dropdown-link">Table</a>
+                        <a href="./html-table-generator.html" class="dropdown-link">Table Generator</a>
                     </div>
                 </li>
-                <li class="header-menu-item"><a href="#" class="header-menu-link">About</a></li>
+                <li class="header-menu-item"><a href="./about.html" class="header-menu-link">About</a></li>
             </ul>
         </nav>
     </header>
@@ -77,7 +80,6 @@
                         Generator</a></b>"
                 tool. You'll typically find it on the homepage or in the tools section.</p><br>
             <h3 style="text-align: left;">Step 2: Prepare Your FAQs</h3>
-            <p></p>
             <ol style="text-align: left;">
                 <li><b>Locate the Text Area:</b> On the tool's main page, you'll see a large box. This box is where
                     you'll enter your Frequently Asked Questions (FAQs) and their corresponding answers. This is for
@@ -85,14 +87,20 @@
                 <li><b>Enter Your FAQs:</b> Click "<b>Add FAQ"</b> and start typing or paste your FAQs here.
                     Remember that each FAQ should consist of two parts: the question and the answer. Be sure to separate
                     each FAQ clearly.</li>
-            </ol>
-            <p></p><br>
-            <h3 style="text-align: left;">Step 3: Adding More FAQs</h3>
-            <p><b>Click "Add FAQ":</b> If you have more FAQs to include, simply click the "Add FAQ" button. This action
-                will create a new section for you to add another question and its answer. You can create as many as you
-                want but adding more than 10 FAQs is generally not recommended.</p><br>
+            </ol><br>
+            <h3 style="text-align: left;">Step 3: Adding/Deleting FAQs</h3>
+            <ol style="text-align: left;">
+            <li>
+                <b>Click "Add FAQ":</b>If you have more FAQs to include, simply click the "Add FAQ" button. This action
+                    will create a new section for you to add another question and its answer. You can create as many as you
+                    want but adding more than 10 FAQs is generally not recommended.</p>
+            </li>
+            <li>
+                <b>Click "Delete Last FAQ":</b>If you have added extra FAQs by mistake, simply click on "Delete Last FAQ" to delete it.
+            </li>
+            </ol><br>
+    
             <h3 style="text-align: left;">Step 4: Generate JSON-LD Code</h3>
-            <p></p>
             <ol style="text-align: left;">
                 <li><b>Generate JSON-LD</b>: After you've entered all your FAQs, it's time to convert them into
                     structured
@@ -101,8 +109,7 @@
                         inside the box to select the code</b>, then use your keyboard's copy command (<b>Ctrl+C</b> or
                     right-click and
                     select "Copy").</li>
-            </ol>
-            <p></p><br>
+            </ol><br>
             <h3 style="text-align: left;">Step 5: Implement the Code</h3>
             <p>Now that you have your JSON-LD code, it's time to use it on your website:</p>
             <p></p>
@@ -114,15 +121,13 @@
                     To paste, use your keyboard's paste command (Ctrl+V or right-click and select "Paste").</li>
                 <li><b>Save or Update:</b> Save your changes or update your webpage to apply the structured FAQ content.
                 </li>
-            </ol>
-            <p></p><br>
+            </ol><br>
             <h3 style="text-align: left;">Step 6: Test Your FAQs</h3>
-            <p></p>
             <ol style="text-align: left;">
-                <li><b>Preview Your Page:</b> Before going live, it's essential to preview the page with the new
-                    structured FAQs to ensure they display correctly.</li>
-                <li><b>Validation Tools:</b> You can also use online <b><a href="#" target="_blank">structured data validation tools</a></b> to check if your
-                    JSON-LD code is correctly formatted.</li>
+                <!-- <li><b>Preview Your Page:</b> Before going live, it's essential to preview the page with the new
+                    structured FAQs to ensure they display correctly.</li> -->
+                <li><b>Validation Tools:</b>It is essential to preview the page with the new structured FAQs to ensure they are working correctly. You can also use online <b><a href="https://search.google.com/test/rich-results" target="_blank">structured data validation tools</a></b> to check if your
+                    JSON-LD code is correctly formatted. If you see <b>FAQ</b> on test result page than it is working fine.</li>
             </ol><br>
             <p style="text-align: left;">Congratulations! You've successfully used ToolNinja's FAQ to JSON-LD Generator
                 to create structured FAQ content for your website. Now let's understand why we have added "<b>Generate HTML</b>" button.</p><br>
@@ -138,7 +143,7 @@
             <p style="text-align: left;"><br /></p>
             <p style="text-align: left;">If you want to add the same FAQs to your website then first of all you have to
                 add some css to you website. Now copy the below code below and follow the steps:</p><br>
-            <div style="background-color: #f0f0f0; padding: 20px; text-align: left;">
+            <div style="background-color: #f0f0f0; padding: 20px; text-align: left; border-radius: 10px;">
                 <div>.customfaq {</div>
                 <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-size: 19px;</div>
                 <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-weight: 600;</div>
@@ -197,12 +202,11 @@
                 your blog's appearance and style it according to your preferences without breaking your template.</p><br>
             <p>Now let's understand how to add visual FAQs to your blog post.</p><br>
             <h2 style="text-align: left;">How To Add Visually Apealing FAQs On Blogger's Blog Post?</h2>
-            <p style="text-align: left;">If you have completed the all steps I have mentioned above there is nothing to do
+            <p style="text-align: left;">If you have completed the all steps I have mentioned earlier in this article then there is nothing to do
                 much. All you have to do is simply go to FAQ Generator Tool in my website, write your FAQs and click on
-                Generate HTML button. copy the generated code and paste it in your blog post also don't forget to add heading before FAQs.</p><br>
-            <p style="text-align: left;"><span style="color: #cc0000;"><strong>One more thing, before you generate the HTML
-                        code make sure all the FAQs are close/collapsed.</strong></span></p><br>
+                Generate HTML button. Copy the generated code and paste it at the end of your blog post also don't forget to add heading before FAQs.</p><br>
             <p style="text-align: left;"><b>You are done now! Thank you for reading my article!</b></p>
+            <div>If you want to add Table on your blog post than <b><a href="./html-table-generator.html">Use this tool.</a></b></div>
         </div>
     </main>
     <footer class="footer">
