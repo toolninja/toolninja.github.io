@@ -1,0 +1,86 @@
+pre {
+    text-wrap: wrap;
+    overflow: auto;
+}
+.faqans {
+    background-color: #f8f8f8;
+    /* box-shadow: 5px 5px 12px 1px rgba(0, 0, 0, 0.3); */
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.faqans p {
+    padding: 10px;
+}
+.faqans P:focus-visible {
+    outline: none;
+}
+
+.faqhead {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+ .faqheading {
+    margin-top: 10px;
+    text-align: center;
+    /* padding: 10px 0; */
+    color: #0056b3;
+} 
+hr {
+    width: 70%;
+    height: 3px;
+    background-color: #0056b3;
+    margin: 10px auto;
+
+}
+
+.faq-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.customfaq {
+    border: 2px solid #007BFF;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+.customfaq:focus-visible {
+    outline: none;
+}
+
+p {
+    border-radius: 5px;
+    margin: 0;
+}
+
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+    .faq-container {
+        width: 90%;
+    }
+}

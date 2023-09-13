@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+*:focus-visible {
+    outline: none;
+  }
 /* Global Styles */
 body {
     font-family: Arial, sans-serif;
@@ -34,6 +36,7 @@ a:hover {
     align-items: center;
     flex-direction: column;
     padding: 20px;
+    background-color: #fff;
 }
 
 .header-logo {
@@ -146,6 +149,7 @@ a:hover {
     justify-content: center;
     padding-bottom: 20px;
     position: relative;
+    background-color: #fff;
 }
 
 .hamburger-menu {

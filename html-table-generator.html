@@ -5,188 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content=" Generate dynamic HTML tables effortlessly with our HTML Table Generator. Customize table headings, add or remove rows and columns, and generate HTML code quickly for your web projects.">
     <title>HTML Table Generator</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .container {
-        display: flex;
-        justify-content: center;
-      }
-      .headings {
-        display: flex;
-        justify-content: space-around;
-        background-color: #007bff;
-        color: white;
-      }
-      .main-heading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #004aad;
-        color: #fff;
-        padding: 20px;
-      }
-      h2 {
-        background-color: #004aad;
-        color: #fff;
-        padding: 10px;
-      }
-      button {
-        border-radius: 5px;
-        padding: 10px 20px;
-        background-color: #004aad;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        margin-top: 10px;
-        font-weight: bold;
-      }
-      button:hover {
-        background-color: white;
-        color: #004aad;
-        box-shadow: 5px 5px 12px 1px rgba(0, 0, 0, 0.3);
-      }
-      textarea {
-        width: 50%;
-        height: 250px;
-        margin: 3px 3px;
-        border: 2px solid #004aad;
-        border-radius: 7px;
-        background-color: white;
-        appearance: none;
-        resize: none;
-        padding: 10px;
-      }
-      textarea:focus-visible {
-        outline: none;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/table.css">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="canonical" href="https://toolninja.github.io/html-table-generator.html">
   </head>
-  <body style="font-family: Arial, sans-serif">
-    <div class="main-heading">
-      <h1>Dynamic Table Generator</h1>
+  <body>
+    <header class="header">
+      <div class="header-container">
+          <img src="./assets/favicon.png" alt="logo" class="header-logo">
+          <h1 class="header-title">Welcome to <span>ToolNinja</span></h1>
+          <p class="header-description">Your Online Toolkit for Everyday Tasks</p>
+      </div>
+      <!-- Hamburger menu container with the hamburger icon test -->
+      <div class="hamburger-menu-container">
+          <div class="hamburger-menu">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+          </div>
+      </div>
+      <nav class="header-nav">
+          <ul class="header-menu">
+              <li class="header-menu-item"><a href="/" class="header-menu-link">Home</a></li>
+              <li class="header-menu-item"><a href="./blog.html" class="header-menu-link">Blog</a></li>
+              <li class="header-menu-item dropdown">
+                  <a href="#" class="header-menu-link">Tools</a>
+                  <div class="dropdown-content">
+                      <a href="./faq-schema-generator.html" class="dropdown-link">FAQs Generator</a>
+                      <a href="./html-table-generator.html" class="dropdown-link">Table Generator</a>
+                  </div>
+              </li>
+              <li class="header-menu-item"><a href="./about.html" class="header-menu-link">About</a></li>
+          </ul>
+      </nav>
+  </header>
+    
+    <main>
+    <div class="tablemain-heading">
+      <h1>HTML Table Generator</h1>
+      <hr class="tablehr">
     </div>
-    <div class="container">
-      <textarea placeholder="Write/Paste Your Refrence Data Here..."></textarea>
-      <textarea
+    <P style="font-size: 18px; font-weight: bold; margin: auto; text-align: center; margin-bottom: 10px;">Don't know how to use this tool? Read this <b><a href="./html-table-generator-user-guide.html">Article.</a></b></P>
+    <div class="tablecontainer">
+      <textarea class="tabletextarea" placeholder="Write/Paste Your Refrence Data Here..."></textarea>
+      <textarea class="tabletextarea"
         id="htmlCode"
         placeholder="HTML Code Will Be Generated Here..."
       ></textarea>
     </div>
     <div style="max-width: 100%; margin: 0 auto; padding: 0px; text-align: center"id="tableCode">
-      <h2 contenteditable="true">Table Heading</h2>
+      <h2 contenteditable="true" class="tableh2">Click to add heading...</h2>
       <table id="myTable" style="width: 100%; border-collapse: collapse; margin-top: 2px">
         <thead>
           <tr></tr>
         </thead>
         <tbody></tbody>
       </table>
-    </div><hr>
+    </div><hr style="background-color: #004aad; border: none;height: 1px;">
     <div style="max-width: 800px; margin: 0 auto; padding: 20px; text-align: center;">
-      <button id="addColumn">Add Column</button>
-      <button id="addRow">Add Row</button>
+      <button class="tablebutton" id="addColumn">Add Column</button>
+      <button class="tablebutton" id="addRow">Add Row</button>
       <br />
-      <button id="deleteLastColumn">Delete Last Column</button>
-      <button id="deleteLastRow">Delete Last Row</button>
+      <button class="tablebutton" id="deleteLastColumn">Delete Last Column</button>
+      <button class="tablebutton" id="deleteLastRow">Delete Last Row</button>
       <br />
-      <button id="generateCode">Generate HTML Code</button>
+      <button class="tablebutton" id="generateCode">Generate HTML Code</button>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const table = document.getElementById("myTable");
-        const tbody = table.querySelector("tbody");
-        const addRowButton = document.getElementById("addRow");
-        const generateCodeButton = document.getElementById("generateCode");
-        const htmlCodeTextArea = document.getElementById("htmlCode");
-        const deleteLastRowButton = document.getElementById("deleteLastRow");
-        const addColumnButton = document.getElementById("addColumn");
-        const deleteLastColumnButton =
-          document.getElementById("deleteLastColumn");
-
-        // Initialize the number of columns
-        let columnCount = table
-          .querySelector("thead")
-          .querySelectorAll("th").length;
-
-        addRowButton.addEventListener("click", function () {
-          const newRow = document.createElement("tr");
-          for (let i = 0; i < columnCount; i++) {
-            const newCell = document.createElement("td");
-            newCell.contentEditable = true;
-            newCell.style.border = "1px solid #ccc";
-            newCell.style.padding = "8px";
-            newCell.textContent = "";
-            newRow.appendChild(newCell);
-          }
-          tbody.appendChild(newRow);
-        });
-
-        generateCodeButton.addEventListener("click", function () {
-          const tableCode = document
-            .getElementById("tableCode")
-            .cloneNode(true); // Clone the tableCode div
-          const editableElements = tableCode.querySelectorAll(
-            '[contenteditable="true"]'
-          ); // Find all elements with contenteditable attribute
-          editableElements.forEach(function (element) {
-            element.removeAttribute("contenteditable"); // Remove the contenteditable attribute
-          });
-          const generatedHTML = tableCode.outerHTML;
-          htmlCodeTextArea.value = generatedHTML;
-          htmlCodeTextArea.style.display = "block";
-        });
-
-        deleteLastRowButton.addEventListener("click", function () {
-          const rows = tbody.querySelectorAll("tr");
-          if (rows.length > 0) {
-            const lastRow = rows[rows.length - 1];
-            tbody.removeChild(lastRow);
-          }
-        });
-
-        addColumnButton.addEventListener("click", function () {
-          const headerCells = table.querySelectorAll("thead th");
-          const newColumnHeader = document.createElement("th");
-          newColumnHeader.contentEditable = true;
-          newColumnHeader.style.background = "#004aad";
-          newColumnHeader.style.color = "#ffffff";
-          newColumnHeader.style.border = "1px solid #ccc";
-          newColumnHeader.style.padding = "8px";
-          newColumnHeader.textContent = "";
-          table.querySelector("thead tr").appendChild(newColumnHeader);
-
-          const rows = tbody.querySelectorAll("tr");
-          rows.forEach(function (row) {
-            const newCell = document.createElement("td");
-            newCell.contentEditable = true;
-            newCell.style.border = "1px solid #ccc";
-            newCell.style.padding = "8px";
-            newCell.textContent = "";
-            row.appendChild(newCell);
-          });
-
-          // Increase the column count
-          columnCount++;
-        });
-        deleteLastColumnButton.addEventListener("click", function () {
-          const headerCells = table.querySelectorAll("thead th");
-          if (headerCells.length > 0) {
-            const rows = tbody.querySelectorAll("tr");
-            headerCells[headerCells.length - 1].remove();
-            rows.forEach(function (row) {
-              const lastCell = row.lastElementChild;
-              if (lastCell) {
-                row.removeChild(lastCell);
-              }
-            });
-            // Decrease the column count
-            columnCount--;
-          }
-        });
-      });
-    </script>
+  </main>
+  <footer class="footer">
+    <p class="footer-text">&copy; 2023 ToolNinja</p>
+</footer>
+<script src="./script/script.js"></script>
+<script src="./script/table.js"></script>
   </body>
 </html>
