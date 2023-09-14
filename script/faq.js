@@ -47,6 +47,9 @@ function clearPlaceholder(element) {
         element.textContent = element.textContent.replace('Write Your Question Here..', '').replace('Write The Answer Here..', '');
     }
 }
+document.getElementById('addFaqButton').addEventListener('click', function () {
+    this.textContent = 'Add More FAQs';
+});
 
 document.getElementById('generateJsonLdButton').addEventListener('click', function () {
     generateJsonLd();
