@@ -34,13 +34,19 @@ document.getElementById('addFaqButton').addEventListener('click', function () {
     const newFaq = document.createElement('div');
     newFaq.classList.add('containerfaq');
     newFaq.innerHTML = `
-        <div class="customfaq" contenteditable="true"></div>
-        <div class=faqans>
-            <p contenteditable="true"></p>
+        <div class="customfaq" contenteditable="true" onclick="clearPlaceholder(this)">Write Your Question Here..</div>
+        <div class="faqans">
+            <p contenteditable="true" onclick="clearPlaceholder(this)">Write The Answer Here..</p>
         </div>
     `;
     faqContainer.appendChild(newFaq);
 });
+
+function clearPlaceholder(element) {
+    if (element.textContent.includes('Write Your Question Here..') || element.textContent.includes('Write The Answer Here..')) {
+        element.textContent = element.textContent.replace('Write Your Question Here..', '').replace('Write The Answer Here..', '');
+    }
+}
 
 document.getElementById('generateJsonLdButton').addEventListener('click', function () {
     generateJsonLd();
