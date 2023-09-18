@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" />
+    <meta name="description" content="ToolNinja - easy to use WebP image converter, without any limit free for lifetime.">
+    <link rel="icon" type="image/png" href="https://toolninja.github.io/assets/favicon.png">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="canonical" href="https://toolninja.github.io/image-converter-to-webp.html">
+    <title>ToolNinja - Your Online Toolkit</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/imageConvert.css">
+    <script type="text/javascript" src="./script/clairity.js"></script>
+    <style>
+        hr {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+            height: 3px;
+            border: none;
+            background-color: black;
+            margin-bottom: 20px;
+
+        }
+        @media (max-width: 720px){
+            hr {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <img src="./assets/favicon.png" alt="logo" class="header-logo">
+            <h1 class="header-title">Welcome to <span>ToolNinja</span></h1>
+            <p class="header-description">Your Online Toolkit for Everyday Tasks</p>
+        </div>
+        <div class="hamburger-menu-container">
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <ul class="header-menu">
+                <li class="header-menu-item"><a href="/" class="header-menu-link">Home</a></li>
+                <li class="header-menu-item"><a href="./blog.html" class="header-menu-link">Blog</a></li>
+                <li class="header-menu-item dropdown">
+                    <a href="#" class="header-menu-link">Tools</a>
+                    <div class="dropdown-content">
+                        <a href="./faq-schema-generator.html" class="dropdown-link">FAQs Generator</a>
+                        <a href="./html-table-generator.html" class="dropdown-link">Table Generator</a>
+                        <a href="./image-converter-to-webp.html" class="dropdown-link">Image Converter</a>
+                    </div>
+                </li>
+                <li class="header-menu-item"><a href="./about.html" class="header-menu-link">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Image Converter (WebP)</h2> <hr class="converthr">
+    <label for="imageInput" class="custom-button"><div><img src="https://toolninja.github.io/assets/upload-icon.webp" alt="" srcset="" style="display: block; margin: auto;" width="50px" height="50px"></div><p>Click here to upload image</p></label>
+    <input type="file" id="imageInput" accept="image/*"><br>
+    <p id="imageStatus">No file chosen</p>
+    <button id="convertButton">Convert to WebP</button>
+    <a id="downloadButton" style="display: none;" download="converted_image.webp"><button>Download WebP</button></a>
+    <img id="outputImage" alt="Converted WebP Image">
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">&copy; 2023 ToolNinja</p>
+    </footer>
+    <script src="./script/imageConvert.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+</html>
