@@ -234,3 +234,9 @@ a:hover {
 .article {
     padding: 10px 200px;
 }
+.tmp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
